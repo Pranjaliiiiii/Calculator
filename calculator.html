@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Calculator</title>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .calculator {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #fff;
+        width:230px;
+    }
+
+    .display {
+        width: 100%;
+        height: 40px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        text-align: right;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 1px;
+    }
+
+    /* .button {
+        width: 50px;
+        height: 40px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button:hover {
+        background-color: #f0f0f0;
+    } */
+    button {
+        width: 50px;
+        height: 40px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button:hover {
+        background-color: #f0f0f0;
+    }
+</style>
+</head>
+<body>
+<div class="calculator">
+    <input class="display" type="text" value = "0" id="Equation" disabled>
+    <table>
+        <tr>
+            <td><button type="button" class="in">7</button></td>
+            <td><button type="button" class="in">8</button></td>
+            <td><button type="button" class="in">9</button></td>
+            <td><button type="button" class="in">/</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="in">4</button></td>
+            <td><button type="button" class="in">5</button></td>
+            <td><button type="button" class="in">6</button></td>
+            <td><button type="button" class="in">*</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="in">1</button></td>
+            <td><button type="button" class="in">2</button></td>
+            <td><button type="button" class="in">3</button></td>
+            <td><button type="button" class="in">-</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="in">0</button></td>
+            <td><button type="button" class="in">.</button></td>
+            <td><button type="button" class="in">%</button></td>
+            <td><button type="button" class="in">+</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="clearall()">AC</button></td>
+            <td><button type="button" onclick="clearone()">C</button></td>
+            <td><button type="button">Back</button></td> 
+            <td><button type="button" onclick="solve()">=</button></td>
+            
+        </tr>
+    </table>
+
+    <script>
+
+        let eq = document.getElementById("Equation");
+        let input = document.querySelectorAll(".in");
+        console.log(input.length);
+
+        input.forEach(x =>{
+            x.addEventListener("click",()=>{
+                eq.value += x.innerText;
+            })
+        })
+
+        function clearall() {
+            eq.value = "";
+        }
+
+        function solve() {
+            eq.value = eval(eq.value);
+        }
+
+        function clearone(){
+            eq.value = eq.value.slice(0,eq.value.length-1);
+        }
+    </script>
+</div>
+</body>
+</html>
